@@ -1,0 +1,67 @@
+=========================================================================
+BUTNARIU Bogdan - 312CB
+
+Tema 3 SD - Biblioteca
+=========================================================================
+main.c 
+
+-> declarare variabile folosite
+-> initializare arbori
+-> citire linie cu linie fisier in
+-> apelare generala a functiilor implementate
+-> eliberare memorie alocata
+=========================================================================
+librarie.h
+
+-> declarare biblioteci folosite
+-> macro definitii pentru: dimensiune alfabet
+                           castari void *
+-> TCarte: contine informatiile cartii
+-> TNod: nod care contine pointer catre informatie
+                          68 de pointeri catre cai
+                          un bool care marcheaza sfarsitul unei chei
+-> declarare antete functii folosites
+=========================================================================
+trie.c
+
+eCuv-> verifica daca nodul este sfarsitul unei chei
+Frunza-> merge prin toti fii nodului si intoarce true/false
+ConstrNod-> aloca memorie pentru nod si returneaza o adresa TArb
+Indice-> primeste un caracter si intoarce pozitia de parcus in fii 
+         nodului. se foloseste de ASCII
+InsT1-> parcurge arborele trie folosind codificarea fiecarei litere
+        din cheie. in cazul in care nu exista nodul, se creeaza unul 
+        nou. la final, se marcheaza finalul cheii si se salveaza
+        informatia cartii in ultimul nod
+InsT2-> asemenea InsT2, dar la final se verifica arborele corespunzator
+        fiecarui autor si se insereaza titlul cartii
+SterCheie-> sterge cheie dintr-un arbore. merge recursiv pe fiecare nivel
+            si returneaza arobrele potrivit dupa stergerea frunzelor
+Cautare-> cauta cheia in arbore. parcurge fiecare litera corespunzatoare
+          din trie si afiseaza true/false
+PrtArb-> printeaza arborele pe care il primeste. parcurge fiecare nivel
+         pe litera corespunzatoare si construieste un sir de caractere 
+         pentru fiecare nivel. merge recursiv pe fiecare nivel. cand
+         ajunge la o cheie, printeaza cheia
+Printare3-> copy-paste PrtArb, dar printeaza doar de 3 ori
+DistrT1-> elibereaza memoria alocata de trie. sterge recursiv fiecare
+          nod inserat si fiecare informatie stocata la final de cheie
+DistrT2-> la fel ca DistrT1
+=========================================================================
+functiiTema.c 
+
+add_book-> aloca memorie pentru informatie si apeleaza InsT1 si InsT2
+search_book-> daca recomandarea este gasita in trie, parcurge litera cu
+              litera si printeaza informatia gasita
+search_book ~-> parcurge arborele pana la prefix si printeaza arborele 
+                nodului respectiv + prefix
+list_author-> daca autorul este gasit, se printeaza arborele lui de carti
+list_author ~-> la fel ca search_book, numai ca foloseste T2 si autor
+search_by_author-> verifica daca autorul si cartea exista, printeaza
+                   informatia cartii recomandate
+search_by_author ~-> merge in T2 pana la final, apoi apeleaza search_book ~
+delete_book-> parcurge in T1 pana la cheia corespunzatoare. verifica daca
+              exista cartea si preia autorul. sterge din T2->arb, iar daca
+              arb nu mai exista, sterge si autorul, apoi sterge cartea din
+              T1 cu eliberare de memorie.
+=========================================================================
